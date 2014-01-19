@@ -1,0 +1,59 @@
+*
+{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0;
+}
+
+html,body
+{
+    height: 100%;
+    background-color: #000;
+}
+
+.container
+{
+    color: white;
+    text-align: center;
+    background-color: #333;
+    padding: 0;
+    margin: 2%;
+    width: 96%;
+    min-height: 96%;
+}
+
+.heading-wrapper
+{
+    padding:5% 0 2% 0;
+    font-size: 1.4em;
+    margin:0;
+}
+
+.form-wrapper
+{
+    margin-top:3%;
+}
+input
+{
+    font-size:1.2em;
+}
+
+@media screen and (max-width: 360px)
+{
+    .heading-wrapper
+    {
+        padding: 15% 0 5% 0;
+        font-size: 0.9em;
+    }
+
+    .form-wrapper
+    {
+        font-size: 0.9em;
+        margin-top:7%;
+    }
+    input
+    {
+        font-size:1em;
+    }
+   
+}

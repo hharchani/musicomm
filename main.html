@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MusiComM</title>
+	<meta charset="utf-8">
+	<link href="styles/main.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+<div class="master-container">
+	<div class="heading-bar">
+		<div class="heading"><h2>MusiComM</h2></div><!--
+	 --><div class="language-select">
+			<select>
+				<option>English</option>
+				<option>Hindi</option>
+				<option>Telugu</option>
+				<option>Other</option>
+			</select>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="navbar"><!--
+			--><span class="button" id="upload">Upload</span><!--
+			--><span class="button" id="top">Top Rated</span><!--
+			--><span class="button" id="new">Newly Added</span><!--
+		--></div>
+
+		<div class="display">
+			<div class="content-container"><!--
+				 --><div class="content" id="content1"><div class="in">
+						<form action="http://web.iiit.ac.in/~harshit.harchani/musicomm/upload2.php" method="post" enctype="multipart/form-data">
+							Select a file <input type="file" name="userfile">
+							<input type="submit" value="Submit" name="submit">
+						</form>
+					</div></div><!--
+				 --><div class="content" id="content2"><div class="in">
+						
+					</div></div><!--
+				 --><div class="content" id="content3"><div class="in">
+						
+					</div></div><!--
+		 --></div>		 
+		</div>
+	</div>
+	<script src="scripts/jquery.js"></script>
+	<script>
+		var i=0;
+		$(document).ready(function(){
+			var topi = 1,newi = 1;
+			setsize();
+			$('#upload').click(function(){ $('.content-container').animate({'left':'0%'});});
+			$('#top').click(function(){ $('.content-container').animate({'left':'-100%'});});
+			$('#new').click(function(){ $('.content-container').animate({'left':'-200%'});});
+									
+			load("top",topi++,"#content2 > div");
+			load("new",newi++,"#content3 > div");
+			
+			$(document).keydown(function(e){
+				
+					switch(e.which)
+					{
+						case 37:
+							$('.content-container').animate({'left':'+=100%'});
+							break;
+						case 39:
+							$('.content-container').animate({'left':'-=100%'});
+							break;
+					}
+				
+				});
+			
+			
+				
+		});
+		function setsize()
+		{
+			/*a=$('#content1').height();
+			b=$('#content2').height();
+			c=$('#content3').height();
+			size=Math.max(a,Math.max(b,c));
+			$('.content').css(height,size+'px');*/
+		}
+		/*
+		function like()
+		{
+			$.ajax({
+				type: "post",
+				url : "http://web.iiit.ac.in/~harshit.harchani/musiccomm/like.php",
+				data: { id: tid }
+				success : function(res){
+					alert(res);
+				}
+			});
+		}*/
+		
+		function load(type,val,selector)
+		{
+			console.log((i++)+'  '+type+'  '+val+'  '+selector);
+			$.ajax({
+				type : "get",
+				url : "http://web.iiit.ac.in/~harshit.harchani/musicomm/script.php",
+				data: {str1 : type, str2 : val },
+				success : function(res){
+					$(selector).append(res);
+				}				
+			});
+		}
+	</script>
+</body>
+</html>
+<!--div class="songs">
+								<img src="images/ijmg1.png" class="thumbs">
+								<strong>Track1</strong><br>
+								<span class="user">User1</span>
+								<span>Likes: 20 <img src="images/like.png" class="like"></span>
+								</div-->
+<!--<div class="songs"><img src="images/img1.jpg" class="thumbs">&nbsp;<div><span class="song-name"><strong>Sunny Sunny feat.  Honey</strong><br></span>Uploaded by <span class="user-name">Amogh Pradeep</span> (<img src="images/star.png" class="like-img"> <span>20</span>)<br><span class="like"><a href="#">Like</a></span></div><a href="#"><img src="images/download.png" class="download-big"></a></div>
+
+//				type : "get",
+//				data : { str1 : ""},
+-->
